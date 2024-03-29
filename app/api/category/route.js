@@ -1,8 +1,14 @@
 import connectDB from "@/lib/db";
 import category from "@/model/category";
 import { NextResponse } from "next/server";
-
-export async function POST(request) {
+import nextCors from "next-cors";
+const cors = nextCors({
+  // Only allow requests from a certain origin
+  origin: "https://example.com",
+  methods: ["GET", "POST", "OPTIONS"], // Allow only specific methods
+});
+export async function POST(req, res) {
+  await cors(req, res);
   try {
     const { title, description } = await request.json();
     await connectDB();
