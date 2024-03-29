@@ -7,7 +7,7 @@ function Nav() {
           <Link href="/">home</Link>
         </li>
         <li>
-          <Link href="category">categoty</Link>
+          <Link href="/posts">Posts</Link>
         </li>
         <li>
           <Link href="/dashboard">Dashboard</Link>

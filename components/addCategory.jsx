@@ -6,11 +6,10 @@ function AddCategories() {
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState();
   const HandleClick = async () => {
-    let data = await axios.post("https://indra-blog.vercel.app/api/category", {
+    let data = await axios.post("http://localhost:3000/api/category", {
       title,
       description,
     });
-    console.log(data);
   };
   return (
     <div className=" flex flex-col gap-[40px]">
