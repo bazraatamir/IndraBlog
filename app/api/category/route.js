@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import nextCors from "next-cors";
 const cors = nextCors({
   // Only allow requests from a certain origin
-  origin: "https://indra-blog-3gkokgqgl-bazarragchaas-projects.vercel.app/",
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"], // Allow only specific methods
 });
 export async function POST(req, res) {
