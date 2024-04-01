@@ -23,11 +23,9 @@ const User = new Schema(
 
 let UserModel;
 
-if (mongoose.models.User) {
+if (mongoose.models.user) {
   UserModel = mongoose.models.User;
 } else {
-  console.log("ccc");
-
   UserModel = mongoose.model("user", User);
 }
 
