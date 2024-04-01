@@ -2,6 +2,7 @@ import connectDB from "@/lib/db";
 import UserModel from "@/model/userModel";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
 
 export const authOptions = {
@@ -13,7 +14,9 @@ export const authOptions = {
         const { email, password } = credentials;
         try {
           await connectDB();
+
           const user = await UserModel.findOne({ email });
+          console.log(user);
           if (!user) {
             return null;
           }
@@ -27,13 +30,17 @@ export const authOptions = {
         }
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
   ],
   session: {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/", // Corrected typo from 'singIn' to 'signIn'
+    signIn: "/",
   },
 };
 
