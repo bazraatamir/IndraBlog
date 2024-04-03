@@ -12,6 +12,18 @@ function Nav() {
         <li>
           <Link href="/dashboard">Dashboard</Link>
         </li>
+        <li>
+          <Link href="/pages/login">login</Link>
+        </li>
+        <li>
+          <Link href="/pages/register">Regsiter</Link>
+        </li>
+        <li>
+          <Link href="/pages/category">Category</Link>
+        </li>
+        <li>
+          <Link href="/posts">Upload</Link>
+        </li>
       </ul>
     </>
   );

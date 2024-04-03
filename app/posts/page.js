@@ -1,9 +1,9 @@
-import Categories from "@/components/category";
+import FileUpload from "@/components/fileOpload";
 
 function Posts() {
   return (
     <div>
-      <Categories />
+      <FileUpload />
     </div>
   );
 }

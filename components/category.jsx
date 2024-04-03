@@ -1,26 +1,29 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
 
-function Categories() {
-  const [category, setCategory] = useState();
-  useEffect(() => {
-    const get_Data = async () => {
-      try {
-        let { data } = await axios.get("http://localhost:3000/api/category");
-        setCategory(data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    get_Data();
-  }, []);
-
+function Categories({ categories }) {
+  console.log(categories);
   return (
     <div>
-      {category && category.map((el) => <p key={el._id}>{el.title}</p>)}
+      {categories && categories.map((el) => <p key={el._id}>{el.title}</p>)}
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  try {
+    const { data } = await axios.get("http://localhost:3000/api/category");
+    console.log(data);
+    const categories = data.data;
+
+    return {
+      props: { categories },
+    };
+  } catch (error) {
+    return {
+      props: { categories: [] }, // Return empty array if error occurs
+    };
+  }
 }
 
 export default Categories;

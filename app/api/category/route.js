@@ -17,7 +17,7 @@ export async function GET(req) {
   try {
     await connectDB();
     const data = await category.find();
-
+    console.log(data);
     return NextResponse.json({ message: "success", data });
   } catch (error) {
     return NextResponse.json({ message: "error", error });
