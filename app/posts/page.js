@@ -1,4 +1,4 @@
-import FileUpload from "@/components/fileOpload";
+import FileUpload from "@/components/fileUpload";
 
 function Posts() {
   return (

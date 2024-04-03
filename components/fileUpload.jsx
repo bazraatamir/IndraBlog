@@ -13,10 +13,14 @@ function FileUpload() {
   const FileUploadHandle = async () => {
     const formData = new FormData();
     formData.append("file", selectFile);
+    console.log(formData);
+    console;
     try {
-      await axios.post("", formData);
+      await axios.post("/api/blog", formData);
       setSuccess("amjiltai");
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -28,7 +32,7 @@ function FileUpload() {
           fileSelectHandle(e);
         }}
       />
-      <button onChange={FileUpload}>Upload</button>
+      <button onClick={FileUploadHandle}>Upload</button>
     </div>
   );
 }
