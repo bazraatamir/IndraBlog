@@ -13,13 +13,16 @@ function FileUpload() {
   const FileUploadHandle = async () => {
     const formData = new FormData();
     formData.append("file", selectFile);
-    console.log(formData);
-    console;
     try {
-      await axios.post("/api/blog", formData);
+      let res = await axios.post("/api/blog", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res);
       setSuccess("amjiltai");
     } catch (error) {
-      console.log(error);
+      console.log(error, "==>");
     }
   };
 
