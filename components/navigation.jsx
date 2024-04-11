@@ -1,31 +1,45 @@
 import Link from "next/link";
 function Nav() {
   return (
-    <>
-      <ul>
+    <div className="w-[80%] h-[60px] flex">
+      <ul className="flex gap-[10px]">
         <li>
-          <Link href="/">home</Link>
+          <Link href="/" className="uppercase">
+            home
+          </Link>
         </li>
         <li>
-          <Link href="/posts">Posts</Link>
+          <Link href="/posts" className="uppercase">
+            Posts
+          </Link>
         </li>
         <li>
-          <Link href="/dashboard">Dashboard</Link>
+          <Link href="/dashboard" className="uppercase">
+            Dashboard
+          </Link>
         </li>
         <li>
-          <Link href="/pages/login">login</Link>
+          <Link href="/pages/login" className="uppercase">
+            login
+          </Link>
         </li>
         <li>
-          <Link href="/pages/register">Regsiter</Link>
+          <Link href="/pages/register" className="uppercase">
+            Regsiter
+          </Link>
         </li>
         <li>
-          <Link href="/pages/category">Category</Link>
+          <Link href="/pages/category" className="uppercase">
+            Category
+          </Link>
         </li>
         <li>
-          <Link href="/posts">Upload</Link>
+          <Link href="/publish" className="uppercase">
+            publish
+          </Link>
         </li>
       </ul>
-    </>
+    </div>
   );
 }
 

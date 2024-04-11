@@ -1,36 +1,18 @@
-import multer from "multer";
 import { NextResponse } from "next/server";
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/upload");
-  },
-});
-
-const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg"
-  ) {
-    cb(null, true);
-  } else cb(null, false);
-};
-const upload = multer({
-  storage,
-  limits: { fieldSize: 1024 * 1024 },
-  fileFilter,
-});
-
-export async function POST(request) {
+import BlogModel from "@/model/BlogModel";
+import connectDB from "@/lib/db";
+export async function POST(req) {
   try {
-    const { file } = await upload.single("file")(request);
-
-    if (!file) {
-      return NextResponse.json({ error: fileValidationError });
-    }
-
+    const { title, fileName, description } = await req.json();
+    await connectDB();
+    let Blog = await BlogModel.create({
+      title: title,
+      ImageUrl: fileName,
+      Description: description,
+    });
     return NextResponse.json({
-      message: "File uploaded successfully",
+      message: " create Blog successfully",
+      Blog,
     });
   } catch (error) {
     return NextResponse.json({ message: "error" });
