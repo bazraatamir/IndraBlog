@@ -23,8 +23,8 @@ const Blog = new Schema(
 
 let BlogModel;
 
-if (mongoose.models.Blog) {
-  BlogModel = mongoose.models.Blog;
+if (mongoose.models.BlogModel) {
+  BlogModel = mongoose.models.BlogModel;
 } else {
   BlogModel = mongoose.model("BlogModel", Blog);
 }

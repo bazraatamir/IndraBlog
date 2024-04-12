@@ -9,7 +9,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/posts" className="uppercase">
+          <Link href="/pages/posts" className="uppercase">
             Posts
           </Link>
         </li>

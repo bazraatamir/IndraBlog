@@ -1,12 +1,13 @@
 "use client";
 import FileUpload from "@/components/fileUpload";
 import { useState } from "react";
-import axios from "@axios";
+import axios from "axios";
 
 function Posts() {
   const [fileName, setFileName] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [success, setSuccess] = useState();
   const handlePublish = async () => {
     try {
       const data = await axios.post("http://localhost:3000/api/blog", {
@@ -14,7 +15,7 @@ function Posts() {
         title,
         description,
       });
-      console.log(data);
+      setSuccess(true);
     } catch (error) {
       console.log(error);
     }
@@ -34,6 +35,7 @@ function Posts() {
       />
       <FileUpload setName={setFileName} />
       <button onClick={handlePublish}>publish</button>
+      {success && <p>success</p>}
     </div>
   );
 }

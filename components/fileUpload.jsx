@@ -7,7 +7,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import { app } from "@/lib/firebase";
+import { app } from "@/app/utils/firebase";
 
 function FileUpload({ setName }) {
   const [selectFile, setSelectFile] = useState(null);
