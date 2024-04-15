@@ -1,4 +1,6 @@
+import { ref } from "firebase/storage";
 import mongoose from "mongoose";
+import { unique } from "next/dist/build/utils";
 const Schema = mongoose.Schema;
 
 const User = new Schema(
@@ -10,13 +12,19 @@ const User = new Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     password: {
       type: String,
-      required: true,
     },
-    
+    savedPosts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "blogModel",
+      },
+    ],
   },
+
   {
     timestamps: true,
   }

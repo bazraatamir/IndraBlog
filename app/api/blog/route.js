@@ -1,6 +1,16 @@
 import { NextResponse } from "next/server";
 import BlogModel from "@/model/BlogModel";
 import connectDB from "@/app/utils/db";
+export async function GET(req) {
+  try {
+    await connectDB();
+    const Blog = await BlogModel.find({});
+    return NextResponse.json({ message: "success", Blog });
+  } catch (error) {
+    return NextResponse.json({ message: "error", error });
+  }
+}
+
 export async function POST(req) {
   try {
     const { title, fileName, description } = await req.json();
@@ -16,18 +26,5 @@ export async function POST(req) {
     });
   } catch (error) {
     return NextResponse.json({ message: "error" });
-  }
-}
-export async function GET(req) {
-  try {
-    let Blog = await BlogModel.find();
-
-    console.log(Blog);
-    return NextResponse.json({
-      message: " get all Blog successfully",
-      Blog,
-    });
-  } catch (error) {
-    return NextResponse.json({ message: "error", error });
   }
 }

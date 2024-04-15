@@ -24,7 +24,7 @@ function Login() {
         setError("алдаа гарлаа");
         return;
       }
-      router.replace("dashboard");
+      router.replac("/");
     } catch (error) {
       console.log("aldaa", error);
     }

@@ -35,6 +35,14 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  async signIn(user, acount, profile) {
+    if (acount.provider === "google") {
+      await connectDB();
+      await UserModel.create(profile.email);
+      return true;
+    }
+    return false;
+  },
   session: {
     strategy: "jwt",
   },
